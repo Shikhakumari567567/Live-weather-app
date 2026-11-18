@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f7fb">
+    <meta
+      name="description"
+      content="A live weather dashboard with current conditions and a five-day forecast."
+    >
+    <title>Weatherly — Live weather dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Weatherly home">
+          <span class="brand-mark" aria-hidden="true">☼</span>
+          <span>weatherly</span>
+        </a>
+        <p class="topbar-note">Your little window to the weather</p>
+        <button class="unit-toggle" id="unit-toggle" type="button" aria-label="Switch to Fahrenheit">
+          <span class="unit-option is-active" data-unit="celsius">°C</span>
+          <span class="unit-divider" aria-hidden="true"></span>
+          <span class="unit-option" data-unit="fahrenheit">°F</span>
+        </button>
+      </header>
+
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">LIVE WEATHER</p>
+        <h1 id="page-title">A clearer view<br class="mobile-break"> of your day.</h1>
+        <p class="intro-copy">Find the forecast for wherever life takes you.</p>
+      </section>
+
+      <form class="search-form" id="search-form" role="search" novalidate>
+        <label class="sr-only" for="city-input">Search for a city</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input
+          id="city-input"
+          name="city"
+          type="search"
+          placeholder="Search a city…"
+          autocomplete="off"
+          maxlength="80"
+          required
+        >
+        <button type="submit" id="search-button">
+          <span class="button-label">Search</span>
+          <span class="button-spinner" aria-hidden="true"></span>
+        </button>
+      </form>
+      <p class="search-hint" id="search-message" role="status" aria-live="polite">
+        Try a city like Tokyo, London, or New York
+      </p>
+
+      <section class="weather-content" id="weather-content" aria-live="polite" aria-busy="false" hidden>
+        <article class="current-card">
+          <div class="current-topline">
+            <div>
+              <p class="card-label">CURRENT WEATHER</p>
+              <h2 id="location-name">—</h2>
+              <p class="location-time" id="local-time">—</p>
+            </div>
+            <span class="weather-icon current-icon" id="current-icon" aria-hidden="true">☀️</span>
+          </div>
+          <div class="current-reading">
+            <p class="temperature" id="current-temperature"><span id="current-temperature-value">—</span><span>°</span></p>
+            <div class="current-description">
+              <p id="current-condition">—</p>
+              <span id="feels-like">Feels like —</span>
+            </div>
+          </div>
+          <div class="current-details">
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">💧</span>
+              <span class="detail-label">Humidity</span>
+              <strong id="humidity">—</strong>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">↗</span>
+              <span class="detail-label">Wind</span>
+              <strong id="wind-speed">—</strong>
+            </div>
+            <div class="detail-item">
+              <span class="detail-icon" aria-hidden="true">☂</span>
+              <span class="detail-label">Rain chance</span>
+              <strong id="rain-chance">—</strong>
+            </div>
+          </div>
+        </article>
+
+        <section class="forecast-section" aria-labelledby="forecast-title">
+          <div class="section-heading">
+            <div>
+              <p class="card-label">PLAN AHEAD</p>
+              <h2 id="forecast-title">5-day forecast</h2>
+            </div>
+            <span class="forecast-caption">A little look at what’s next</span>
+          </div>
+          <div class="forecast-grid" id="forecast-grid"></div>
+        </section>
+      </section>
+
+      <section class="empty-state" id="empty-state" aria-label="Weather search prompt">
+        <div class="empty-art" aria-hidden="true">
+          <span class="art-sun">☀</span>
+          <span class="art-cloud">☁</span>
+          <span class="art-sparkle">✦</span>
+        </div>
+        <p>Your forecast is just around the corner.</p>
+      </section>
+
+      <footer class="footer">
+        <span>Made for wherever you are.</span>
+        <span>Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a></span>
+      </footer>
+    </main>
+  </body>
+</html>
